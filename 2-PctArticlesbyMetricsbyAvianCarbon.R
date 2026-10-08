@@ -1,26 +1,17 @@
 #Corinne Bassett
-#Standalone script: side-by-side bar charts of percent of articles by
-#composition metric, for carbon and avian articles.
+#Standalone script: side-by-side bar charts of percent of articles by composition metric, for carbon and avian articles.
 
-# Packages -----------
 
 # Load data
 avian.data <- read.csv(file.path(data_dir, "Avian_UFCompMetricData_21Nov24.csv"))
-carbon.data <- read.csv(file.path(data_dir, "Carbon_UFCompMetricData_21Nov24.csv"))-------------------------------------------------------
-library(tidyverse)      # dplyr, stringr, ggplot2, forcats, etc.
-library(splitstackshape) # cSplit_e()
-library(patchwork)       # combine plots with a shared legend
-library(openxlsx)        # read.xlsx()
+carbon.data <- read.csv(file.path(data_dir, "Carbon_UFCompMetricData_21Nov24.csv"))
 
-# Data location. Set DATA_DIR to the folder containing the raw data files,
-# e.g. Sys.setenv(DATA_DIR = "path/to/data")
+# Data location
 data_dir <- Sys.getenv("DATA_DIR")
 
 # Category lookup for each composition metric
 list.compmetrics <- read.xlsx(file.path(data_dir, "ListofUFCompMetrics.xlsx"))
 
-# Helper: read raw data, split the multi-value Composition.metric column into
-# one indicator column per metric, drop N/A-only articles, and count how many
 # articles used each metric.
 count_metrics <- function(path, keep_cols, na_articles) {
   raw <- read.csv(path)
@@ -46,13 +37,13 @@ count_metrics <- function(path, keep_cols, na_articles) {
 
 # Carbon --------------------------------------------------------------------
 carbon_cols <- c("Rayyan.ID", "Full.citation", "Title", "Year", "Journal",
-                 "Publication.Type.", "Country.of.First.Author", "Study.Country",
+                 "Country.of.First.Author", "Study.Country",
                  "Urb.scale", "Year.start", "Year.end", "Comparator",
                  "Forest.comp", "Rec.included", "Rec1", "Rec2", "Rec3",
                  "Carbon.metric", "Composition.metric")
 
 counts.carbon.compmetricsonly_df <- count_metrics(
-  file.path(data_dir, "CarbonUFCompositionMetric_RawData_21Nov24.csv"),
+  file.path(data_dir, "Carbon_UFCompMetricData_21Nov24.csv"),
   keep_cols = carbon_cols,
   na_articles = c(879385490, 879386384)
 )
@@ -64,7 +55,7 @@ avian_cols <- c("Rayyan.ID", "Citation", "Country.Auth", "Title", "Journal",
                 "Composition.metric")
 
 counts.avian.compmetricsonly_df <- count_metrics(
-  file.path(data_dir, "AvianUFCompositionMetric_RawData_21Nov24.csv"),
+  file.path(data_dir, "Avian_UFCompMetricData_21Nov24.csv"),
   keep_cols = avian_cols,
   na_articles = c(364026331, 364026955)
 )
@@ -92,7 +83,7 @@ pct.avian <- metric_categories %>%
 category_colors <- c(
   "size"                  = "#440154FF",
   "structure"             = "#443A83FF",
-  "taxonomy"              = "#31688EFF",
+  "species"               = "#31688EFF",
   "tree characteristics"  = "#35B779FF",
   "vegetation layer type" = "#FDE725FF"
 )

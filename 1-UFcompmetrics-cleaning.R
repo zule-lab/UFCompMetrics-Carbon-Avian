@@ -14,7 +14,7 @@ list.compmetrics <- read.xlsx(file.path(data_dir, "ListofUFCompMetrics.xlsx"))
 carbon.data<- read.csv(file.path(data_dir, "Carbon_UFCompMetricData_21Nov24.csv"))
 
 #cut down to only necessary columns for figures
-carbon.meta <- carbon.data[ ,c("Rayyan.ID", "Full.citation", "Title","Year", "Journal", "Publication.Type.", "Country.of.First.Author",
+carbon.meta <- carbon.data[ ,c("Rayyan.ID", "Full.citation", "Title","Year", "Journal", "Country.of.First.Author",
                                "Study.Country", "Urb.scale", "Year.start", "Year.end", "Comparator", 
                                "Forest.comp", "Rec.included","Rec1", "Rec2", "Rec3", "Carbon.metric","Composition.metric")]
 

@@ -6,3 +6,4 @@ library(splitstackshape) # cSplit_e()
 library(cowplot)         # plot_grid(), ggdraw(), draw_label()
 library(patchwork)       # combine ggplots (plot_layout())
 library(pheatmap)        # clustered heatmaps
+library(ggh4x)           # facet_manual() for custom facet layouts

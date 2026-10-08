@@ -1,10 +1,15 @@
 #Corey Bassett
-#Script for frequencies of Carbon and Avian outcomes and heatmaps. See Table 3 of Hutt-Taylor et al., 2024 for definitions).
+#Script for frequencies of Carbon and Avian outcomes and heatmaps
 
 #packages and cleaned data (sources 0-packages.R internally)
 source('1-UFcompmetrics-cleaning.R')
 
 #carbon outcomes
+
+  # Split the Carbon.metric into individual items and count unique strings
+  carbonoutcomes_strings <- unlist(strsplit(as.character(carbon.separatemetrics$Carbon.metric), ", "))
+  
+  # Count the number of unique strings
 
   # Split the Carbon.metric into individual items and count unique strings
   carbonoutcomes_strings <- unlist(strsplit(as.character(carbon.separatemetrics$Carbon.metric), ", "))

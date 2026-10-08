@@ -11,6 +11,7 @@ source('3-CarbonAvianOutcomes.R')                # carbon/avian metric-outcome h
 source('4-ClusterAnalysis.R')                    # co-occurrence helpers + *_jacc matrices
 source('6-articlespermetric.R')                  # combined_hist
 source('7-VegLayerTypes.R')                      # veglayer_plot, veglayer_freq_plot
+source('9-Pct_articles_by_category.R')           # faceted_combined_barplot
 
 # Output folder
 out_dir <- "figs/no title figs"
@@ -45,3 +46,8 @@ ggsave(file.path(out_dir, "veglayer_types_per_article.pdf"),
 ggsave(file.path(out_dir, "veglayer_freq_by_type.pdf"),
        veglayer_freq_plot + labs(title = NULL),
        width = 7, height = 5, units = "in", dpi = 300)
+
+# Percent of articles by category (faceted; title dropped, panel strips kept)
+ggsave(file.path(out_dir, "pct_articles_by_category.pdf"),
+       faceted_combined_barplot + labs(title = NULL),
+       width = 12, height = 8, units = "in", dpi = 300)
