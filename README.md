@@ -7,13 +7,7 @@ This is the repository for an analysis of urban forest composition metrics used 
 ## Requirements
 
 - R (developed under R 4.5.2)
-- The packages loaded in [`0-packages.R`](0-packages.R): `tidyverse`, `openxlsx`, `splitstackshape`, `cowplot`, `patchwork`, and `pheatmap`. Install any that are missing, e.g.:
 
-  ```r
-  install.packages(c("tidyverse", "openxlsx", "splitstackshape",
-                     "cowplot", "patchwork", "pheatmap"))
-  ```
->>>>>>> Stashed changes
 
 ## Data setup
 
@@ -56,4 +50,5 @@ in any order — no manual sourcing of the packages or cleaning step is required
 | [`5-Scale.R`](5-Scale.R) | Summary tables of composition metrics by urban scale |
 | [`6-articlespermetric.R`](6-articlespermetric.R) | Histograms of the number of composition metrics used per article |
 | [`7-VegLayerTypes.R`](7-VegLayerTypes.R) | Vegetation layer type analyses across the carbon and avian datasets |
-| [`8-NoTitleFigs.R`](8-NoTitleFigs.R) | Regenerates publication-ready, title-free versions of the figures into `figs/no title figs/` (sources scripts 2–7 to rebuild the plots) |
+| [`8-NoTitleFigs.R`](8-NoTitleFigs.R) | Regenerates publication-ready, title-free versions of the figures into `figs/no title figs/` (sources scripts 2–7 and 9 to rebuild the plots) |
+| [`9-Pct_articles_by_category.R`](9-Pct_articles_by_category.R) | Faceted bar chart of the percent of carbon and avian articles using each composition metric, grouped into panels by metric category (uses `ggh4x` for equal bar widths across panels) |
